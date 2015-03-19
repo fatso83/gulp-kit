@@ -22,7 +22,7 @@
     "url": "https://github.com/lukx/gulp-kit/issues"
   },
   "dependencies": {
-    "node-kit": "^0.8.1",
+    "node-kit": "0.8.1",
     "through2": "~0.6.1",
     "gulp-util": "~3.0.1"
   }
