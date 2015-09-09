@@ -1,5 +1,5 @@
 # gulp-kit
-Integrates node-kit with gulp.
+Integrates [`node-kit`](https://github.com/jeremyworboys/node-kit) with [`gulp`](http://gulpjs.com/) to compile [`.kit`](http://incident57.com/codekit/help.html#kit) templates with your own build system.
 
 ## Usage
     
