@@ -2,9 +2,15 @@ var kit = require('node-kit');
 var through2 = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
-//var defaults = require('lodash.defaults');
+var path = require('path');
+var partialPrefix = '_';
+  
+function isPartial(filepath) { 
+  return path.basename(filepath)[0] === partialPrefix; 
+}
 
 module.exports = function (options) {
+  options = options || {};
 
   function transform (file, enc, next) {
     var self = this;
@@ -14,13 +20,14 @@ module.exports = function (options) {
       return next();
     }
 
+    if(isPartial(file.path) && !options.compilePartials) {
+      return next();
+    }
+
     if (file.isStream()) {
       this.emit('error', new PluginError('gulp-kit', 'Streaming not supported'));
       return next();
     }
-
-    //var str = file.contents.toString('utf8');
-
 
     try {
       var html = kit(file.path);
@@ -32,25 +39,6 @@ module.exports = function (options) {
     }
 
     next();
-
-    /*less.render(str, opts, function (err, css) {
-      if (err) {
-
-        // convert the keys so PluginError can read them
-        err.lineNumber = err.line;
-        err.fileName = err.filename;
-
-        // add a better error message
-        err.message = err.message + ' in file ' + err.fileName + ' line no. ' + err.lineNumber;
-
-        self.emit('error', new PluginError('gulp-kit', err));
-      } else {
-        file.contents = new Buffer(css);
-        file.path = gutil.replaceExtension(file.path, '.css');
-        self.push(file);
-      }
-      next();
-    });*/
   }
 
   return through2.obj(transform);
