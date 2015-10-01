@@ -1,11 +1,8 @@
 {
   "name": "gulp-kit",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Integrates node-kit with gulp to compile .kit files",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lukx/gulp-kit"
