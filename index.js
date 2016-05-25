@@ -4,13 +4,15 @@ var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 var path = require('path');
 var partialPrefix = '_';
-  
-function isPartial(filepath) { 
-  return path.basename(filepath)[0] === partialPrefix; 
+
+function isPartial(filepath) {
+  return path.basename(filepath)[0] === partialPrefix;
 }
 
 module.exports = function (options) {
   options = options || {};
+	options.variables = options.variables || {};
+	options.forbiddenPaths = options.forbiddenPaths || [];
 
   function transform (file, enc, next) {
     var self = this;
@@ -30,9 +32,9 @@ module.exports = function (options) {
     }
 
     try {
-      var html = kit(file.path);
+      var html = new kit.Kit(file.path, options.variables, options.forbiddenPaths).toString();
       file.contents = new Buffer(html);
-      file.path = (options.fileExtension) ? gutil.replaceExtension(file.path, options.fileExtension) : gutil.replaceExtension(file.path, '.html');
+			file.path = (options.fileExtension) ? gutil.replaceExtension(file.path, options.fileExtension) : gutil.replaceExtension(file.path, '.html');
       self.push(file);
     } catch( e ) {
       self.emit('error', new PluginError('gulp-kit', e));
