@@ -32,7 +32,7 @@ module.exports = function (options) {
     try {
       var html = kit(file.path);
       file.contents = new Buffer(html);
-      file.path = gutil.replaceExtension(file.path, '.html');
+      file.path = (options.fileExtension) ? gutil.replaceExtension(file.path, options.fileExtension) : gutil.replaceExtension(file.path, '.html');
       self.push(file);
     } catch( e ) {
       self.emit('error', new PluginError('gulp-kit', e));
