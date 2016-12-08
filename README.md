@@ -24,3 +24,13 @@ plugin.
       .pipe( kit({compilePartials : true}) )
       // ... further pipes, as above
     
+You can also pass through any user-defined CodeKit variables by passing
+`{ variables: { key: value, key: value, etc. }}` to the plugin.
+
+      // ... as above
+      .pipe( kit({			
+          variables: {
+				"$uiVer": pkg.version,
+				"$bsVer": "3.1"
+		}}) )
+      // ... further pipes, as above
