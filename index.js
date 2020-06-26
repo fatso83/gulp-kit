@@ -1,8 +1,9 @@
 var kit = require('node-kit');
 var through2 = require('through2');
-var gutil = require('gulp-util');
-var PluginError = gutil.PluginError;
+var PluginError = require('plugin-error');
 var path = require('path');
+var replaceExt = require('replace-ext');
+
 var partialPrefix = '_';
 
 function isPartial(filepath) {
@@ -34,7 +35,7 @@ module.exports = function (options) {
     try {
       var html = new kit.Kit(file.path, options.variables, options.forbiddenPaths).toString();
       file.contents = new Buffer(html);
-			file.path = (options.fileExtension) ? gutil.replaceExtension(file.path, options.fileExtension) : gutil.replaceExtension(file.path, '.html');
+      file.path = (options.fileExtension) ? replaceExt(file.path, options.fileExtension) : replaceExt(file.path, '.html');
       self.push(file);
     } catch( e ) {
       self.emit('error', new PluginError('gulp-kit', e));
