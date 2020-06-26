@@ -32,7 +32,7 @@ module.exports = function (options) {
     }
 
     try {
-      var html = new kit.Kit(file.path, options.variables, options.forbiddenPaths).toString();
+      var html = new kit.Kit(file.path, options.variables, options.forbiddenPaths.slice()).toString();
       file.contents = new Buffer(html);
 			file.path = (options.fileExtension) ? gutil.replaceExtension(file.path, options.fileExtension) : gutil.replaceExtension(file.path, '.html');
       self.push(file);
