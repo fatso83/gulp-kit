@@ -1,9 +1,9 @@
-var kit = require('node-kit');
-var through2 = require('through2');
-var PluginError = gutil.PluginError;
-var path = require('path');
-var partialPrefix = '_';
-var replaceExt = require('replace-ext');
+const kit = require('node-kit');
+const through2 = require('through2');
+const PluginError = gutil.PluginError;
+const path = require('path');
+const partialPrefix = '_';
+const replaceExt = require('replace-ext');
 
 function isPartial(filepath) {
   return path.basename(filepath)[0] === partialPrefix;
@@ -32,7 +32,7 @@ module.exports = function (options) {
     }
 
     try {
-      var html = new kit.Kit(file.path, options.variables, options.forbiddenPaths).toString();
+      const html = new kit.Kit(file.path, options.variables, options.forbiddenPaths.slice()).toString();
       file.contents = new Buffer.from(html);
 			file.path = (options.fileExtension) ? replaceExt(file.path, options.fileExtension) : replaceExt(file.path, '.html');
       self.push(file);
