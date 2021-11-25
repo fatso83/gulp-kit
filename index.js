@@ -38,6 +38,7 @@ module.exports = function (options) {
       self.push(file);
     } catch( e ) {
       self.emit('error', new PluginError('gulp-kit', e));
+      self.emit('end');
     }
 
     next();
