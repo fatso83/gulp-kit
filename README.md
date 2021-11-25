@@ -4,6 +4,8 @@ with [`gulp`](http://gulpjs.com/) to compile
 [`.kit`](http://incident57.com/codekit/help.html#kit) templates 
 with your own build system.
 
+[![NPM version](https://badge.fury.io/js/gulp-kit.svg)](http://badge.fury.io/js/gulp-kit)
+
 ## Usage
     
     var kit = require('gulp-kit');

@@ -1,26 +1,26 @@
 {
   "name": "gulp-kit",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Integrates node-kit with gulp to compile .kit files",
   "main": "index.js",
+  "dependencies": {
+    "node-kit": "0.11.0",
+    "through2": "~0.6.1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukx/gulp-kit"
+    "url": "git+https://github.com/fatso83/gulp-kit"
   },
   "keywords": [
-    "gulp",
     "codekit",
-    "html",
-    "node-kit"
+    "gulp",
+    "node-kit",
+    "html"
   ],
   "author": "Lukas Domnick <lukx@lukx.de>",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/lukx/gulp-kit/issues"
+    "url": "https://github.com/fatso83/gulp-kit/issues"
   },
-  "dependencies": {
-    "node-kit": "0.9.0",
-    "through2": "~0.6.1",
-    "gulp-util": "~3.0.1"
-  }
+  "homepage": "https://github.com/fatso83/gulp-kit#readme"
 }
