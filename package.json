@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "node-kit": "0.11.0",
-    "through2": "~0.6.1"
+    "through2": "~4.0.2"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/fatso83/gulp-kit/issues"
   },
-  "homepage": "https://github.com/fatso83/gulp-kit#readme"
+  "homepage": "https://github.com/fatso83/gulp-kit#readme",
+  "devDependencies": {
+    "@types/gulp": "^4.0.9",
+    "gulp": "^4.0.2",
+    "plugin-error": "^1.0.1"
+  }
 }
